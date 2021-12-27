@@ -1,9 +1,13 @@
-import React from 'react';
+import NewMeetupForm from '../../components/meetups/NewMeetupForm';
 
 const NewMeetup = () => {
+    const addMeetupHandler = (enteredData) => {
+        console.log(enteredData);
+    };
+
     return (
         <>
-            <h1>New MeetUp</h1>
+            <NewMeetupForm onAddMeetup={addMeetupHandler} />
         </>
     )
 };
