@@ -17,7 +17,7 @@ const DUMMY_MEETUPS = [
     }
 ]
 
-const HomePage = () => {
+const HomePage = (props) => {
     return (
         <>
             <MeetupList meetups={props.meetups} />
@@ -25,13 +25,27 @@ const HomePage = () => {
     )
 }
 
-//this code does not execute on the client side, it fetches data during build for pre-loading, this is helpful for SearchEngineOptimization
+// export async function getServerSideProps(context) {
+//     const req = context.req;
+//     const res = context.res;
+
+//     //fetch data from api, not exposed to client
+
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS
+//         }
+//     };
+// }
+
+// this code does not execute on the client side, it fetches data during build for pre-loading, this is helpful for SearchEngineOptimization
 export async function getStaticProps() {
     //fetch data from api
     return {
         props: {
             meetups: DUMMY_MEETUPS
-        }
+        },
+        revalidate: 10
     };
 }
 
